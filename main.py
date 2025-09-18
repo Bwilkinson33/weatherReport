@@ -94,6 +94,12 @@ def generate_weather_report(forecast):
     The minimum temperature will be {forecast['temp_min']}°C.
 
     The total precipitation will be {forecast['precipitation']}mm.
+    
+    Based on this data, please do the following:
+1.  Summarize the overall weather for the day. Is it mostly sunny, cloudy, rainy?
+2.  Find the highest and lowest temperatures for the day from the hourly data.
+3.  Convert all temperatures to Fahrenheit for the final report.
+4.  Mention the chance of rain if it's significant at any point during the day.
 
 
 

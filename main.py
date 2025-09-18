@@ -79,14 +79,27 @@ def generate_weather_report(forecast):
     weather_description = WMO_CODES.get(forecast["weather_code"], "Unknown weather code")
 
     prompt = f"""
-    Generate a friendly and conversational weather report for tomorrow.
+    Generate a creative and emoji-filled weather report for tomorrow, in a fun themed style that would be good with college kids. also convert to farenheit for the actual response. It should sound like a normal person wrote it as well so not too ai generated.
+
     The date is {forecast['date']}.
+
     The weather condition is: {weather_description}.
+
     The maximum temperature will be {forecast['temp_max']}°C.
+
     The minimum temperature will be {forecast['temp_min']}°C.
+
     The total precipitation will be {forecast['precipitation']}mm.
 
-    Please provide a short, easy-to-read summary.
+
+
+    Here is an example of the style I want, it doesnt have to be racing themed, just get the vibes right, no hashtags:
+
+    "Today’s track conditions :racing_car: :dash: are extremely dry :dromedary_camel: with a whopping 0% rain coverage. :potted_plant:  :seedling:  Medium tyres :wheel: definitely reccomended to combat today’s temps climbing from a low of 67° to a high of 84°. :hot_face: :fire: It’s also very sunny. All day. So much sun. :sunny: :sunny: :sunny:"
+
+
+
+    Please generate a new report in this style, using the provided weather data. Be creative and use lots of emojis.
     """
 
     response = model.generate_content(prompt)

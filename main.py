@@ -2,6 +2,10 @@ import os
 import requests
 import google.generativeai as genai
 from dotenv import load_dotenv
+from datetime import datetime
+
+now = datetime.now()
+timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
 
 # WMO Weather interpretation codes
 WMO_CODES = {
@@ -74,7 +78,7 @@ def generate_weather_report(forecast):
         return "GEMINI_API_KEY not found in environment variables."
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
+    model = genai.GenerativeModel('models/gemini-2.5-pro')
 
     weather_description = WMO_CODES.get(forecast["weather_code"], "Unknown weather code")
 
@@ -131,7 +135,7 @@ def send_to_discord(report):
     data = {"content": report}
     response = requests.post(webhook_url, json=data)
     if response.status_code == 204:
-        print("Successfully sent report to Discord.")
+        print(f"Successfully sent report to Discord. {timestamp}")
     else:
         print(f"Failed to send report to Discord. Status code: {response.status_code}")
 

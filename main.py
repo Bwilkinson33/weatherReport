@@ -101,7 +101,6 @@ def generate_weather_report(forecast):
         hourly_data_str += f"{time} | {temp}°C | {precip_prob}% | {weather_desc}\n"
 
     prompt = f"""
-    You are a creative weather forecaster. Your task is to generate a fun, emoji-filled weather report for the day, with a style that would appeal to college kids. It should sound like a normal person wrote it, not an AI.
 
     Here is the detailed hourly forecast data for the day:
     {hourly_data_str}
@@ -111,12 +110,8 @@ def generate_weather_report(forecast):
     2. Find the highest and lowest temperatures for the day from the hourly data.
     3. Convert all temperatures to Fahrenheit for the final report.
     4. Mention the chance of rain if it's significant (ONLY if the chance is above 50%) at any point during the day.
-    5. Write the report in a fun, creative, and conversational tone, using plenty of relevant emojis. Do not use hashtags.
-
-    Here is an example of the desired *style* (do not copy the content, just the gist of it):
-    "Today’s track conditions :racing_car: :dash: are extremely dry :dromedary_camel: with a whopping 0% rain coverage. :potted_plant: :seedling: Medium tyres :wheel: definitely reccomended to combat today’s temps climbing from a low of 67° to a high of 84°. :hot_face: :fire: It’s also very sunny. All day. So much sun. :sunny: :sunny: :sunny:"
-
-    Now, generate the new report based on the provided hourly data. Try to keep it around the length of the example, maybe two or three sentences longer.
+    Now, generate the new report based on the provided hourly data.
+    also include the original weather data exactly copy/paste, except convert to farenheit.
     """
 
     response = model.generate_content(prompt)
